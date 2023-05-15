@@ -3,7 +3,8 @@ import {useFormik} from 'formik'
 import * as yup from 'yup'
 import {v4 as generateId} from 'uuid'
 import { useContext } from "react";
-import PostContext from "../../contexts/PostsContext";
+import PostsContext from "../../contexts/PostsContext";
+import {useNavigate} from 'react-router-dom'
 
 const StyledMain = styled.main`
     display: flex;
@@ -46,6 +47,10 @@ const StyledMain = styled.main`
 
 const Add = () => {
 
+    const navigate = useNavigate()
+
+    const {setPosts, ACTION_TYPES} = useContext(PostsContext)
+
     const values = {
         title: "",
         body: ""
@@ -69,6 +74,11 @@ const Add = () => {
                 title: values.title,
                 body: values.body 
             }
+            setPosts({
+                type: ACTION_TYPES.ADD,
+                data: newPost
+            })
+            navigate('/')
         }
     })
 

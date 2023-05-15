@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useReducer, useEffect } from "react";
 
-const PostContext = createContext()
+const PostsContext = createContext()
 
 const ACTION_TYPES = {
     GET: 'getAllPosts',
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
     }   
 }
 
-const PostProvider = ({children}) => {
+const PostsProvider = ({children}) => {
 
     const [posts, setPosts] = useReducer(reducer, [])
 
@@ -36,7 +36,7 @@ const PostProvider = ({children}) => {
     }, [])
 
     return ( 
-        <PostContext.Provider
+        <PostsContext.Provider
             value={{
                 ACTION_TYPES,
                 posts,
@@ -44,9 +44,9 @@ const PostProvider = ({children}) => {
             }}
         >
             {children}
-        </PostContext.Provider>
+        </PostsContext.Provider>
      );
 }
  
-export default PostContext;
-export {PostProvider}
+export default PostsContext;
+export {PostsProvider}
