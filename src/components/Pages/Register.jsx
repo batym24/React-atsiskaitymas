@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {useFormik} from 'formik'
 import * as yup from 'yup'
+import UsersContext from "../../contexts/UsersContext";
+import { useContext } from "react";
 
 const StyledMain = styled.main`
     display: flex;
@@ -42,6 +44,8 @@ const StyledMain = styled.main`
 `
 
 const Register = () => {
+
+    const {setUsers} = useContext(UsersContext)
 
     const values = {
         email: '',
