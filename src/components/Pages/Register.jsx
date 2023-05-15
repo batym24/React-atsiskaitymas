@@ -3,6 +3,7 @@ import {useFormik} from 'formik'
 import * as yup from 'yup'
 import UsersContext from "../../contexts/UsersContext";
 import { useContext } from "react";
+import {v4 as generateId} from 'uuid'
 
 const StyledMain = styled.main`
     display: flex;
@@ -45,7 +46,8 @@ const StyledMain = styled.main`
 
 const Register = () => {
 
-    const {setUsers} = useContext(UsersContext)
+    const {setUsers, users, USERS_ACTION_TYPE} = useContext(UsersContext)
+
 
     const values = {
         email: '',
@@ -72,9 +74,24 @@ const Register = () => {
         initialValues: values,
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            console.log(values)
+            const newUser = {
+                id: generateId(),
+                email: values.email,
+                password: values.password
+            }
+            if(newUser.email !== users.find(user => user.email === newUser.email)){
+                setUsers({
+                    type: USERS_ACTION_TYPE.ADD,
+                    data: newUser
+                })
+            }
+            else {
+                return (<p>This email is already used</p>)
+            }
         }
     })
+
+    console.log(users)
 
     return ( 
         <StyledMain>

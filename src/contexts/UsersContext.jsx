@@ -1,14 +1,17 @@
 import { createContext } from "react";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 const UsersContext = createContext()
 
 const USERS_ACTION_TYPE = {
+    GET: 'getAllUsers',
     ADD: 'addNewUser'
 }
 
 const reducer = (state, action) => {
     switch (action.type){
+        case USERS_ACTION_TYPE.GET:
+            return action.data
         case USERS_ACTION_TYPE.ADD:
             fetch(`http://localhost:8080/users`, {
                 method: 'POST',
@@ -23,10 +26,24 @@ const UsersProvider = ({children}) => {
 
     const [users, setUsers] = useReducer(reducer, [])
 
+    const usersEmail = users.filter(user => user.email)
+
+    useEffect(() => {
+        fetch('http://localhost:8080/users')
+        .then(res => res.json())
+        .then(data => {
+            setUsers({
+                type: USERS_ACTION_TYPE.GET,
+                data: data
+            })
+        })
+    }, [])
+
     return ( 
         <UsersContext.Provider
             value={{
                 setUsers,
+                users,
                 USERS_ACTION_TYPE
             }}
         >
