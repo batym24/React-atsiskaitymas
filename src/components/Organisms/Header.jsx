@@ -45,7 +45,7 @@ const StyledHeader = styled.header`
     }
     .nav a {
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         padding: 15px;
         font-weight: 700;
         color: #82d7f7;
