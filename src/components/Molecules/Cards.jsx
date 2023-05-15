@@ -6,8 +6,8 @@ const StyledDiv = styled.div`
 
 const Card = () => {
     return ( 
-        <>
-        </>
+        <StyledDiv>
+        </StyledDiv>
      );
 }
  
