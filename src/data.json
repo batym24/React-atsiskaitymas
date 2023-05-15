@@ -153,23 +153,13 @@
   ],
   "users": [
     {
-      "id": "fca74bf6-25b6-4bc2-8c6f-da672bb372f4",
+      "id": "e217dc98-3883-44d9-8bf1-8f666a2bb318",
       "email": "m@gmail.com",
       "password": "Labas_123"
     },
     {
-      "id": "d221e20b-c074-490b-9be2-d59a4c685b45",
-      "email": "m@gmail.com",
-      "password": "Labas_123"
-    },
-    {
-      "id": "1ffbb527-60c8-4090-9930-e6c5523f7fd5",
-      "email": "m@gmail.com",
-      "password": "Labas_123"
-    },
-    {
-      "id": "df46d8e2-6379-4c20-ad45-0716079bbc98",
-      "email": "m@gmail.com",
+      "id": "a5f24e12-9979-4035-baa0-956ca29e8da9",
+      "email": "ma@gmail.com",
       "password": "Labas_123"
     }
   ]

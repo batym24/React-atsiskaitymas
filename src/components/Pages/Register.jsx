@@ -2,8 +2,9 @@ import styled from "styled-components";
 import {useFormik} from 'formik'
 import * as yup from 'yup'
 import UsersContext from "../../contexts/UsersContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {v4 as generateId} from 'uuid'
+import {useNavigate} from 'react-router-dom'
 
 const StyledMain = styled.main`
     display: flex;
@@ -33,7 +34,7 @@ const StyledMain = styled.main`
         input[type='submit'] {
             padding: 10px;
             width: 200px;
-            margin: auto;
+            margin: 20px auto;
         }
     }
 
@@ -46,8 +47,11 @@ const StyledMain = styled.main`
 
 const Register = () => {
 
-    const {setUsers, users, USERS_ACTION_TYPE} = useContext(UsersContext)
+    const {setUsers, users, USERS_ACTION_TYPE, setCurrentUser} = useContext(UsersContext)
 
+    const [notValid, setNotValid] = useState(null)
+
+    const navigate = useNavigate()
 
     const values = {
         email: '',
@@ -79,20 +83,22 @@ const Register = () => {
                 email: values.email,
                 password: values.password
             }
-            if(newUser.email !== users.find(user => user.email === newUser.email)){
+            if(newUser.email !== users.find(user => user.email === newUser.email)?.email){
                 setUsers({
                     type: USERS_ACTION_TYPE.ADD,
                     data: newUser
                 })
+                setCurrentUser(newUser)
+                setNotValid(null)
+                navigate('/')
             }
             else {
-                return (formik.errors.email)
+                setNotValid(true)
             }
         }
     })
 
     
-
     return ( 
         <StyledMain>
             <h1>Registration</h1>
@@ -143,6 +149,10 @@ const Register = () => {
                     }
                 </div>
                 <input type="submit" value={"Register"} />
+                {
+                    notValid &&
+                    <p style={{textAlign:"center", color:"tomato"}}>Email is already in use</p>
+                }
             </form>
         </StyledMain>
      );
