@@ -3,7 +3,42 @@ import {useFormik} from 'formik'
 import * as yup from 'yup'
 
 const StyledMain = styled.main`
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-size: 1.1rem;
+            padding: 5px;
+        }
+
+        input {
+            width: 300px;
+            padding: 5px;
+        };
+
+        input[type='submit'] {
+            padding: 10px;
+            width: 200px;
+            margin: 20px auto;
+        }
+    }
+
+    form > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const Login = () => {
@@ -29,7 +64,7 @@ const Login = () => {
         initialValues: values,
         validationSchema: validationSchema,
         onSubmit: (values) => {
-
+            console.log(values)
         }
     })
 
@@ -53,7 +88,7 @@ const Login = () => {
                     }
                 </div>
                 <div>
-                    <label htmlFor="password">Email</label>
+                    <label htmlFor="password">Password</label>
                     <input 
                     type="password"
                     name="password"
@@ -67,7 +102,7 @@ const Login = () => {
                         <p style={{color:"tomato"}}>{formik.errors.password}</p>
                     }
                 </div>
-                <input type="login" value={"Login"} />
+                <input type="submit" value={"Login"} />
             </form>
         </StyledMain>
      );
