@@ -11,14 +11,16 @@ const StyledMain = styled.main`
     gap: 20px;
     padding: 30px;
 
-    div {
-        border: 1px solid black;
-        width: 200px;
-        padding: 5px;
+    > div {
+        border: 2px solid black;
+        width: 250px;
+        padding: 10px;
+        background-color: #f7f7f7;
 
-        p {
-            font-size: 0.1rem,;
-        }
+    }
+
+    > div > p {
+        font-size: 0.9rem;
     }
 `
 
