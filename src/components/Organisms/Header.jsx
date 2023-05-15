@@ -17,6 +17,7 @@ const StyledHeader = styled.header`
         border-radius: 5px;
         font-size: 1rem;
         font-weight: 600;
+        cursor: pointer;
     }
 
     img {
