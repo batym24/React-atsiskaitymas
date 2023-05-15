@@ -20,7 +20,6 @@ const StyledHeader = styled.header`
             align-items: center;
         img {
             width: 50px
-
         }
     }
 
@@ -43,7 +42,13 @@ const StyledHeader = styled.header`
         img {
             width: 80px;
         }
-
+    }
+    .nav a {
+        text-decoration: none;
+        font-size: 1.5rem;
+        padding: 15px;
+        font-weight: 700;
+        color: #82d7f7;
     }
 `
 
@@ -65,7 +70,14 @@ const Header = () => {
                 </div>
                 
             }
+            {
+                currentUser &&
+                <div className="nav">
+                    <Link to='/'>Home</Link>
+                    <Link to='/add'>Add</Link>
+                </div> 
 
+            }
             {
                 currentUser ?
                 <div className="user">
