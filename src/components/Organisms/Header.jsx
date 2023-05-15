@@ -31,8 +31,8 @@ const Header = () => {
                 <img src="https://daily-dev-tips.com/ezoimgfmt/cdn.hashnode.com/res/hashnode/image/upload/v1647492266631/rH6yDfWyJ.png?ezimgfmt=rs:380x337/rscb2/ngcb2/notWebP" alt="logo" />
             </div>
             <div>
-                <button>Login</button>
-                <button>Register</button>
+                <Link to='/login'><button>Login</button></Link>
+                <Link to= '/register'><button>Register</button></Link>
             </div>
         </StyledHeader>
      );
