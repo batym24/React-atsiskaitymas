@@ -16,12 +16,25 @@ const reducer = (state, action) => {
 
 const PostProvider = ({children}) => {
 
-    const [posts, setPosts] = useReducer(reducer, []) 
+    const [posts, setPosts] = useReducer(reducer, [])
+
+    useEffect (() => {
+        fetch('http://localhost:8080/posts')
+        .then(res => res.json())
+        .then(data => setPosts({
+            type: ACTION_TYPES.GET,
+            data: data
+        }))
+    }, [])
+
+    console.log(posts)
 
     return ( 
         <PostContext.Provider
             value={{
-
+                ACTION_TYPES,
+                posts,
+                setPosts
             }}
         >
             {children}
