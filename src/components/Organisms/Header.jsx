@@ -4,7 +4,8 @@ import UsersContext from "../../contexts/UsersContext";
 import { useContext } from "react";
 
 const StyledHeader = styled.header`
-    height: 70px;
+    height: 80px;
+    box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -40,7 +41,7 @@ const StyledHeader = styled.header`
         left: 15px;
         
         img {
-            width: 80px;
+            width: 60px;
         }
     }
     .nav a {

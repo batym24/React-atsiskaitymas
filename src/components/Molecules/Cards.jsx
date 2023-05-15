@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-    
+    margin: 5px;
 `
 
 const Card = ({post}) => {

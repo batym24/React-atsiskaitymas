@@ -7,14 +7,16 @@ import {useNavigate} from 'react-router-dom'
 
 const StyledMain = styled.main`
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
     width: 500px;
-    margin: 20px auto;
+    margin: 60px auto;
     padding: 30px;
     border-radius: 5px;
     background-color: #f7f7f7;
+    min-height: calc(100vh - 130px);
 
     form {
         display: flex;

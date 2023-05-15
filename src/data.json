@@ -166,6 +166,11 @@
       "id": "a5f24e12-9979-4035-baa0-956ca29e8da9",
       "email": "ma@gmail.com",
       "password": "Labas_123"
+    },
+    {
+      "id": "7167b3a1-0695-4cc2-8729-5a84f07a61ba",
+      "email": "naujasVartotojas@gmail.com",
+      "password": "naujasVartotojas_123"
     }
   ]
 }
