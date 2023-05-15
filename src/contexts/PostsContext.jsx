@@ -4,14 +4,22 @@ import { useReducer, useEffect } from "react";
 const PostContext = createContext()
 
 const ACTION_TYPES = {
-    GET: 'getAllPosts'
+    GET: 'getAllPosts',
+    ADD: 'addNewPosts'
 }
 
 const reducer = (state, action) => {
     switch (action.type){
         case ACTION_TYPES.GET: 
-        return action.data
-    }
+            return action.data
+            case ACTION_TYPES.ADD:
+                fetch(`http://localhost:8080/posts`, {
+                    method: 'POST',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify(action.data)
+                })
+                return [...state, action.data]
+    }   
 }
 
 const PostProvider = ({children}) => {
@@ -26,8 +34,6 @@ const PostProvider = ({children}) => {
             data: data
         }))
     }, [])
-
-    console.log(posts)
 
     return ( 
         <PostContext.Provider
