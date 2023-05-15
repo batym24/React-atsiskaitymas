@@ -30,12 +30,22 @@ const Home = () => {
 
     return ( 
         <StyledMain>
-            {
-                posts.map(post => <Card
-                    key={post.id}
-                    post = {post}
-                />)
-            }
+{   
+        posts ? (
+            posts.length > 0 ? (
+                posts.map(post => (
+                    <Card
+                        key={post.id}
+                        post={post}
+                    />
+                ))
+            ) : (
+                <h1>No posts found.</h1>
+            )
+        ) : (
+            <h1>Loading...</h1>
+        )
+    }
         </StyledMain>
      );
 }
