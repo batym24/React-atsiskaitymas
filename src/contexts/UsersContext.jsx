@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 
 const UsersContext = createContext()
 
@@ -26,7 +26,7 @@ const UsersProvider = ({children}) => {
 
     const [users, setUsers] = useReducer(reducer, [])
 
-    const usersEmail = users.filter(user => user.email)
+    const [currentUser, setCurrentUser] = useState(null)
 
     useEffect(() => {
         fetch('http://localhost:8080/users')
@@ -44,7 +44,9 @@ const UsersProvider = ({children}) => {
             value={{
                 setUsers,
                 users,
-                USERS_ACTION_TYPE
+                USERS_ACTION_TYPE,
+                currentUser,
+                setCurrentUser
             }}
         >
             {children}

@@ -86,12 +86,12 @@ const Register = () => {
                 })
             }
             else {
-                return (<p>This email is already used</p>)
+                return (formik.errors.email)
             }
         }
     })
 
-    console.log(users)
+    
 
     return ( 
         <StyledMain>
