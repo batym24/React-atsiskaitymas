@@ -4,15 +4,18 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom'
 import { PostProvider } from './contexts/PostsContext';
+import { UsersProvider } from './contexts/UsersContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <UsersProvider>
   <PostProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </PostProvider>
+  </UsersProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -10,7 +10,7 @@ const USERS_ACTION_TYPE = {
 const reducer = (state, action) => {
     switch (action.type){
         case USERS_ACTION_TYPE.ADD:
-            fetch(`http://localhost:8080/posts`, {
+            fetch(`http://localhost:8080/users`, {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},
                 body: JSON.stringify(action.data)
@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     }
 }
 
-const UserProvider = ({children}) => {
+const UsersProvider = ({children}) => {
 
     const [users, setUsers] = useReducer(reducer, [])
 
@@ -36,4 +36,4 @@ const UserProvider = ({children}) => {
 }
  
 export default UsersContext;
-export {UserProvider}
+export {UsersProvider}
