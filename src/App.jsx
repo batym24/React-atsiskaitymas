@@ -7,6 +7,7 @@ import Home from './components/Pages/Home';
 import UsersContext from './contexts/UsersContext';
 import { useContext } from 'react';
 import Add from './components/Pages/Add';
+import Footer from './components/Organisms/Footer';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
       </Routes>
+      <Footer/>
     </>
   );
 }
