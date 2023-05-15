@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
     align-items: center;
     padding: 20px;
     border-bottom: 2px solid gray;
+    background-color: white;
 
     button {
         padding: 10px 30px;

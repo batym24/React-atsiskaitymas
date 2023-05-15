@@ -6,6 +6,39 @@ const StyledMain = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid black;
+    width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-size: 1.1rem;
+            padding: 5px;
+        }
+
+        input {
+            width: 300px;
+            padding: 5px;
+        };
+
+        input[type='submit'] {
+            padding: 10px;
+            width: 200px;
+            margin: auto;
+        }
+    }
+
+    form > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const Register = () => {
