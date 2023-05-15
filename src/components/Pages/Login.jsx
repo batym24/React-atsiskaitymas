@@ -25,11 +25,49 @@ const Login = () => {
         .required("This input is required")
     })
 
+    const formik = useFormik({
+        initialValues: values,
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+
+        }
+    })
+
     return ( 
         <StyledMain>
             <h1>Login</h1>
             <form>
-
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input 
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />
+                    {
+                        (formik.touched.email && formik.errors.email) && 
+                        <p style={{color:"tomato"}}>{formik.errors.email}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="password">Email</label>
+                    <input 
+                    type="password"
+                    name="password"
+                    id="password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />
+                    {
+                        (formik.touched.password && formik.errors.password) && 
+                        <p style={{color:"tomato"}}>{formik.errors.password}</p>
+                    }
+                </div>
+                <input type="login" value={"Login"} />
             </form>
         </StyledMain>
      );
