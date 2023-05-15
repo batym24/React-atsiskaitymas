@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {useFormik} from 'formik'
 import * as yup from 'yup'
 import UsersContext from "../../contexts/UsersContext";
-import { useContext } from "react";
+import { useContext} from "react";
 import {useNavigate} from 'react-router-dom'
 
 const StyledMain = styled.main`
@@ -46,7 +46,7 @@ const StyledMain = styled.main`
 
 const Login = () => {
 
-    const {users, setCurrentUser, currentUser} = useContext(UsersContext)
+    const {users, setCurrentUser, currentUser, setNotValid, notValid} = useContext(UsersContext)
 
     const navigate = useNavigate()
 
@@ -70,25 +70,23 @@ const Login = () => {
     const formik = useFormik({
         initialValues: values,
         validationSchema: validationSchema,
-        onSubmit: (values, {resetForm}) => {
+        onSubmit: (values,) => {
             const logedInUser = users.find(user => values.email === user.email && values.password == user.password)
             if(logedInUser){
                 setCurrentUser(logedInUser)
+                setNotValid(null)
                 navigate('/')
             }
             else {
-                alert('Username or password is incorect')
-                resetForm({values: ""})
+                setNotValid(true)
             }
         }
     })
 
-    console.log(currentUser)
-
     return ( 
         <StyledMain>
             <h1>Login</h1>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
@@ -121,6 +119,10 @@ const Login = () => {
                 </div>
                 <input type="submit" value={"Login"} />
             </form>
+            {
+                    notValid &&
+                    <p style={{textAlign:"center", color:"tomato"}}>Email or password not correct</p>
+            }
         </StyledMain>
      );
 }

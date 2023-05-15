@@ -47,9 +47,7 @@ const StyledMain = styled.main`
 
 const Register = () => {
 
-    const {setUsers, users, USERS_ACTION_TYPE, setCurrentUser} = useContext(UsersContext)
-
-    const [notValid, setNotValid] = useState(null)
+    const {setUsers, users, USERS_ACTION_TYPE, setCurrentUser, setNotValid, notValid} = useContext(UsersContext)
 
     const navigate = useNavigate()
 

@@ -49,7 +49,8 @@ const UsersProvider = ({children}) => {
                 USERS_ACTION_TYPE,
                 currentUser,
                 setCurrentUser,
-                setNotValid
+                setNotValid,
+                notValid
             }}
         >
             {children}
