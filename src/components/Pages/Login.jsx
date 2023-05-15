@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import {useFormik} from 'formik'
 import * as yup from 'yup'
+import UsersContext from "../../contexts/UsersContext";
+import { useContext } from "react";
+import {useNavigate} from 'react-router-dom'
 
 const StyledMain = styled.main`
     display: flex;
@@ -43,6 +46,10 @@ const StyledMain = styled.main`
 
 const Login = () => {
 
+    const {users, setCurrentUser, currentUser} = useContext(UsersContext)
+
+    const navigate = useNavigate()
+
     const values = {
         email: '',
         password: ''
@@ -63,10 +70,20 @@ const Login = () => {
     const formik = useFormik({
         initialValues: values,
         validationSchema: validationSchema,
-        onSubmit: (values) => {
-            console.log(values)
+        onSubmit: (values, {resetForm}) => {
+            const logedInUser = users.find(user => values.email === user.email && values.password == user.password)
+            if(logedInUser){
+                setCurrentUser(logedInUser)
+                navigate('/')
+            }
+            else {
+                alert('Username or password is incorect')
+                resetForm({values: ""})
+            }
         }
     })
+
+    console.log(currentUser)
 
     return ( 
         <StyledMain>

@@ -28,6 +28,8 @@ const UsersProvider = ({children}) => {
 
     const [currentUser, setCurrentUser] = useState(null)
 
+    const [notValid, setNotValid] = useState(null)
+
     useEffect(() => {
         fetch('http://localhost:8080/users')
         .then(res => res.json())
@@ -46,7 +48,8 @@ const UsersProvider = ({children}) => {
                 users,
                 USERS_ACTION_TYPE,
                 currentUser,
-                setCurrentUser
+                setCurrentUser,
+                setNotValid
             }}
         >
             {children}
