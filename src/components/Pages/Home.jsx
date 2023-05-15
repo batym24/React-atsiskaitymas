@@ -7,6 +7,19 @@ import Card from "../Molecules/Cards";
 const StyledMain = styled.main`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+
+    div {
+        border: 1px solid black;
+        width: 200px;
+        padding: 5px;
+
+        p {
+            font-size: 0.1rem,;
+        }
+    }
 `
 
 const Home = () => {
