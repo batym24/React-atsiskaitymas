@@ -17,23 +17,46 @@ const Register = () => {
     }
 
     const validationSchema = yup.object({
+        email: yup.string()
+        .email("This input must be valid email")
+        .required("This input is required"),
+        password: yup.string()
+        .matches(
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,20}$/,
+            "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+          )
+        .required("This input is required"),
+        passwordCheck: yup.mixed()
+        .oneOf([yup.ref('password')], 'Passwords must match')
+        .required("This input is required"),
+    })
 
+    const formik = useFormik({
+        initialValues: values,
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+            console.log(values)
+        }
     })
 
     return ( 
         <StyledMain>
             <h1>Registration</h1>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <div>
                     <label htmlFor="email">Provide your email</label>
                     <input 
                     type="email" 
                     name="email" 
                     id="email" 
-                    value={''}
-                    onChange={""}
-                    onBlur={""}
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     />
+                    {
+                        (formik.touched.email && formik.errors.email) && 
+                        <p style={{color: 'tomato'}}>{formik.errors.email}</p>
+                    }
                 </div>
                 <div>
                     <label htmlFor="password">Provide your password</label>
@@ -41,10 +64,14 @@ const Register = () => {
                     type="password" 
                     name="password" 
                     id="password" 
-                    value={''}
-                    onChange={""}
-                    onBlur={""}
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     />
+                    {
+                        (formik.touched.password && formik.errors.password) && 
+                        <p style={{color: 'tomato'}}>{formik.errors.password}</p>
+                    }
                 </div>
                 <div>
                     <label htmlFor="passwordCheck">Repeat the password</label>
@@ -52,10 +79,14 @@ const Register = () => {
                     type="password" 
                     name="passwordCheck" 
                     id="passwordCheck" 
-                    value={''}
-                    onChange={""}
-                    onBlur={""}
+                    value={formik.values.passwordCheck}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     />
+                    {
+                        (formik.touched.passwordCheck && formik.errors.passwordCheck) && 
+                        <p style={{color: 'tomato'}}>{formik.errors.passwordCheck}</p>
+                    }
                 </div>
                 <input type="submit" value={"Register"} />
             </form>
