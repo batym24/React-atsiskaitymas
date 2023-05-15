@@ -4,9 +4,11 @@ const StyledDiv = styled.div`
     
 `
 
-const Card = () => {
+const Card = ({post}) => {
     return ( 
         <StyledDiv>
+            <h4>{post.title}</h4>
+            <p>{post.body}</p>
         </StyledDiv>
      );
 }

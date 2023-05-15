@@ -53,9 +53,19 @@ const Header = () => {
 
     return ( 
         <StyledHeader>
-            <div className="logo">
-                <img src="https://daily-dev-tips.com/ezoimgfmt/cdn.hashnode.com/res/hashnode/image/upload/v1647492266631/rH6yDfWyJ.png?ezimgfmt=rs:380x337/rscb2/ngcb2/notWebP" alt="logo" />
-            </div>
+            {
+                currentUser ? 
+                <div className="logo">
+                    <Link to="/">
+                        <img src="https://daily-dev-tips.com/ezoimgfmt/cdn.hashnode.com/res/hashnode/image/upload/v1647492266631/rH6yDfWyJ.png?ezimgfmt=rs:380x337/rscb2/ngcb2/notWebP" alt="logo" />
+                    </Link>
+                </div> :
+                <div className="logo">
+                    <img src="https://daily-dev-tips.com/ezoimgfmt/cdn.hashnode.com/res/hashnode/image/upload/v1647492266631/rH6yDfWyJ.png?ezimgfmt=rs:380x337/rscb2/ngcb2/notWebP" alt="logo" />
+                </div>
+                
+            }
+
             {
                 currentUser ?
                 <div className="user">

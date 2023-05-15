@@ -3,13 +3,14 @@ import {Routes, Route} from 'react-router-dom'
 import Header from './components/Organisms/Header';
 import Register from './components/Pages/Register';
 import Login from './components/Pages/Login';
+import Home from './components/Pages/Home';
 
 const App = () => {
   return (
     <>
       <Header />
       <Routes>
-        {/* <Route path='/' element={<Home/>}></Route> */}
+        <Route path='/' element={<Home/>}></Route>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
       </Routes>
